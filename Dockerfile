@@ -8,6 +8,7 @@ ENV PATH /usr/src/frontend/node_modules/.bin:$PATH
 
 RUN npm install -g create-react-app
 RUN npm install
+RUN yarn install
 
 EXPOSE 3000
 
