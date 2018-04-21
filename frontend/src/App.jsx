@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
-import { Sidebar, Menu, Icon } from 'semantic-ui-react'
+import { Sidebar, Menu, Icon, Image } from 'semantic-ui-react'
+import ImageLogo from './assets/img/achivement-logo.jpg'
 class App extends Component {
     render(){
     return(
         <Sidebar as={Menu} visible={true} vertical inverted>
+            <Image src={ImageLogo} size='small' circular />
             <Menu.Item name='habits'>
                 <Icon name='home' />
                 Habits
