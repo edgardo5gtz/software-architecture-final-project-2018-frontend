@@ -6,7 +6,9 @@ class Habits extends Component {
     render(){
         return(
             <Grid.Row>{/* This is the Header*/}
-                <HeaderWithIcon />
+                <HeaderWithIcon
+                    title="Habits"
+                    subtitle="Manage a list of all your habits" />
             </Grid.Row>
         );
     }

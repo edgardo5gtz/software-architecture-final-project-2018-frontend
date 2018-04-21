@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Route, Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { Sidebar, Menu, Icon, Image } from 'semantic-ui-react'
 import ImageLogo from '../../assets/img/achivement-logo.jpg'
 
@@ -28,7 +28,7 @@ class Navbar extends Component {
                     </Menu.Item>
                 </Link>
                 <Link to="/account">
-                    <Menu.Item name='acoount'>
+                    <Menu.Item name='account'>
                         <Icon name='camera' />
                         Account
                     </Menu.Item>

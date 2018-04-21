@@ -2,14 +2,16 @@ import React, { Component } from 'react'
 import { Header, Icon } from 'semantic-ui-react'
 
 
-const HeaderWithIcon = (props) => (
-    <Header as='h2' icon>
-        <Icon name='settings' />
-        { this.props.title }
-        <Header.Subheader>
-                {this.props.subtitle}
-        </Header.Subheader>
-    </Header>
-);
+function HeaderWithIcon(props){
+    return (
+        <Header as='h2' icon>
+            <Icon name='settings' />
+            { props.title }
+            <Header.Subheader>
+                    { props.subtitle }
+            </Header.Subheader>
+        </Header>
+    );
+}
 
 export default HeaderWithIcon;
