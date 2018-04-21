@@ -1,9 +1,12 @@
+// Import react global packages
+// Import react global packages
 import React, { Component } from 'react'
-import { Grid, Menu } from 'semantic-ui-react';
+import { Grid } from 'semantic-ui-react'
+import { Route } from 'react-router-dom'
 
+// Import Pages
 import Navbar from './container/Navbar/Navbar'
-import HeaderWithIcon from './components/Header/HeaderWithIcon'
-
+import Habits from './container/Habits/Habits'
 class App extends Component {
     render(){
         return(
@@ -12,15 +15,8 @@ class App extends Component {
                     <Navbar/>
                 </Grid.Column>
 
-                <Grid.Column width={12} textAlign="center">  {/* This is the Main Body*/}
-                    
-                    <Grid.Row>{/* This is the Header*/}
-                      <HeaderWithIcon/>
-                    </Grid.Row>
-                    
-                    <Grid.Row> {/* This is the Body*/}
-    
-                    </Grid.Row>
+                <Grid.Column width={12} textAlign="center">  {/* This is the Main Block*/}
+                    <Route path="/habits" component={Habits} />
                 </Grid.Column>
             </Grid>
         );

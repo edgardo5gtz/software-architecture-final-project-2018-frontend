@@ -1,10 +1,8 @@
 // Import react global packages
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { BrowserRouter as Router ,
-         Route,
-         Link
-        } from 'react-router-dom'
+import { BrowserRouter as Router } from 'react-router-dom'
+
 // Import css and frameworks
 import 'semantic-ui-css/semantic.min.css';
 
