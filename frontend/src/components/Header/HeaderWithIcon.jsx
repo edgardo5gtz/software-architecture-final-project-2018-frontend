@@ -5,9 +5,9 @@ import { Header, Icon } from 'semantic-ui-react'
 const HeaderWithIcon = (props) => (
     <Header as='h2' icon>
         <Icon name='settings' />
-        Account Settings
+        { this.props.title }
         <Header.Subheader>
-                Manage your account settings and set e-mail preferences.
+                {this.props.subtitle}
         </Header.Subheader>
     </Header>
 );
