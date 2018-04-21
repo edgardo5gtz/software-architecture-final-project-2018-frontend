@@ -1,9 +1,18 @@
+// Import react global packages
 import React from 'react'
-import  ReactDOM from 'react-dom'
-import App from './container/App.jsx'
+import ReactDOM from 'react-dom'
+import { BrowserRouter as Router ,
+         Route,
+         Link
+        } from 'react-router-dom'
+// Import css and frameworks
+import 'semantic-ui-css/semantic.min.css';
 
+// Import Application
+import App from './App'
 
 ReactDOM.render(
-<App/>, 
-document.getElementById('app')
-);
+    <Router>   
+        <App/>
+    </Router>,
+document.getElementById('app'));
