@@ -1,7 +1,6 @@
 // Import react global packages
 import React, { Component } from 'react'
-import { Grid, Header, Button, Segment, Container } from 'semantic-ui-react'
-import { Route, Switch } from 'react-router-dom'
+import { Grid, Header, Button, Container } from 'semantic-ui-react'
 
 // Import Components
 import SignUp from '../../components/SignUp/SignUp'
