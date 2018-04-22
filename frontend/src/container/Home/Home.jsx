@@ -50,7 +50,7 @@ class Home extends Component {
     }
 
     handleLogInSubmit() {
-        //this.props.loggingIn = true;
+        this.props.handleLogIn();
         console.log("submit loggin");
     }
 

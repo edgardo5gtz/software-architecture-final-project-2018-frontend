@@ -11,6 +11,7 @@ class App extends Component {
         super(props);
         this.state = {loggedIn: false};
         this.checkLogin = this.checkLogin.bind(this);
+        this.handleLogIn = this.handleLogIn.bind(this);
     }
     render(){
         return(
@@ -23,8 +24,13 @@ class App extends Component {
             return <Dashboard/>;
         }
         else {
-            return <Home/>;
+            return <Home handleLogIn={this.handleLogIn}/>;
         }
+    }
+
+    handleLogIn(){
+        //this.setState({loggedIn: true});
+        console.log("state reaches home!");
     }
 
 }
