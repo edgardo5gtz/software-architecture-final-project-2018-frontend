@@ -3,7 +3,7 @@ import { Form, Button } from 'semantic-ui-react'
 
 function LogIn(props){
     return(
-        <Form size={props.size}>
+        <Form size={props.size} onSubmit={props.handleLogInSubmit}>
             <Form.Group>
                 <Form.Field width={props.width} label="Name" control="input" placeholder="Name"/>
             </Form.Group>

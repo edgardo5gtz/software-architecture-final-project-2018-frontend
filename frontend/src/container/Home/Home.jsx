@@ -10,9 +10,19 @@ import LogIn from '../../components/LogIn/LogIn'
 class Home extends Component {
     constructor(props){
         super(props);
-        this.state = {loggingIn: false, signingUp: false};
+        this.state = {loggingIn: false,
+                      signingUp: false, 
+                      signedUp: false
+                      // loggedIn state comes from parent props
+                    };
+        
+        // Render Components
         this.renderLogIn = this.renderLogIn.bind(this);
         this.renderSignUp = this.renderSignUp.bind(this);
+
+        // Handle Submit Forms and Routing
+        this.handleLogInSubmit = this.handleLogInSubmit.bind(this);
+        this.handleSignUpSubmit = this.handleSignUpSubmit.bind(this);
     }
 
     render() {
@@ -39,12 +49,21 @@ class Home extends Component {
         );
     }
 
+    handleLogInSubmit() {
+        //this.props.loggingIn = true;
+        console.log("submit loggin");
+    }
+
+    handleSignUpSubmit() {
+        //this.setState({signedUp: true});
+        console.log("submit sign up");
+    }
 
     renderSelectedForm(){
         if(this.state.loggingIn){
-            return <LogIn size="large" width={4} />
+            return <LogIn size="large" width={4} handleLogInSubmit={this.handleLogInSubmit}/>
         }else if(this.state.signingUp){
-            return <SignUp size="large" width={4} />
+            return <SignUp size="large" width={4} handleSignUpSubmit={this.handleSignUpSubmit}/>
         }
     }
 

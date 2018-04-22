@@ -3,7 +3,7 @@ import { Form, Button, Segment } from 'semantic-ui-react'
 
 function SignUp(props) {
     return (
-        <Form size={props.size}>
+        <Form size={props.size} onSubmit={props.handleSignUpSubmit}>
             <Form.Group>
                 <Form.Field width={props.width} label="Email Account" control="input" placeholder="something@otherthing.com"/>
             </Form.Group>
