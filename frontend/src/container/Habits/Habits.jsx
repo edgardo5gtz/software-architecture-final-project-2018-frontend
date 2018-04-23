@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Grid, Divider, Card } from 'semantic-ui-react';
 import HeaderWithIcon from '../../components/Header/HeaderWithIcon'
-import * as api from '../../api_utils/api_habits'
+import * as Api from '../../api_utils/api_habits'
 
 const items = [
     {
@@ -38,8 +38,8 @@ class Habits extends Component {
 
     getHabits(){
         console.log("hello")
-        api.getUserHabits().then(
-            response => console.log(response)
+        Api.getUserHabits().then(
+            data => console.log(data)
         );
     }
 }

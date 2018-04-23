@@ -11,7 +11,7 @@ function postUserHabits(habit) {
     return axios.post(
         BASE_URL, habit
     ).then(
-        response => console.log(response)
+        response => { return response }
     ).catch(error => console.log(error));
 }
 
@@ -19,7 +19,7 @@ function getUserHabits() {
     return axios.get(
         BASE_URL,
     ).then(
-        response => console.log(response)
+        response => { return response }
     ).catch(error => console.log(error));
 }
 
@@ -27,7 +27,7 @@ function putUserHabits(habit){
     return axios.put(
         BASE_URL, habit
     ).then(
-        response => console.log(response)
+        response => { return response }
     ).catch(error => console.log(error));
 }
 
@@ -35,7 +35,7 @@ function deleteUserHabits(id){
     return axios.delete(
         BASE_URL + '/' + id
     ).then(
-        response => console.log(response)
+        response => { return response }
     ).catch(
         error => console.log(error)
     );
