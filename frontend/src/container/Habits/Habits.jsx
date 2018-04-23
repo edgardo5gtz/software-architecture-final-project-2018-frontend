@@ -1,24 +1,21 @@
 import React, { Component } from 'react'
 import { Grid, Container, Divider, Card } from 'semantic-ui-react';
 import HeaderWithIcon from '../../components/Header/HeaderWithIcon'
+import * as api from '../../api_utils/api_habits'
+
 const items = [
     {
         header: 'Project Report - April',
         description: 'Leverage agile frameworks to provide a robust synopsis for high level overviews.',
         meta: 'ROI: 30%',
-    },
-    {
-        header: 'Project Report - May',
-        description: 'Bring to the table win-win survival strategies to ensure proactive domination.',
-        meta: 'ROI: 34%',
-    },
-    {
-        header: 'Project Report - June',
-        description: 'Capitalise on low hanging fruit to identify a ballpark value added activity to beta test.',
-        meta: 'ROI: 27%',
-    }];
+    }
+];
 class Habits extends Component {
-   
+   constructor(props){
+        super(props);
+        this.state = {test1 : []}
+        this.getHabits = this.getHabits.bind(this);
+   }
     render(){
         return(
             <Container>
@@ -34,6 +31,13 @@ class Habits extends Component {
                     </Card.Group>
                 </Grid.Row>
             </Container>
+        );
+    }
+
+    getHabits(){
+        console.log("hello")
+        api.getUserHabits().then(
+            response => console.log(response)
         );
     }
 }

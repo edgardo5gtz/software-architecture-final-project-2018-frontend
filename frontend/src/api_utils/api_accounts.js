@@ -7,6 +7,8 @@ const BASE_URL = 'http://localhost:8081/accounts';
 const VM_IP = '192.168.99.100'
 const BASE_URL_VM = `http://${VM_IP}:8081/accounts`;
 
+export {registerAccount, getUserAccount};
+
 function registerAccount(account){
     return axios.
         post(BASE_URL_VM + '/register',account).
