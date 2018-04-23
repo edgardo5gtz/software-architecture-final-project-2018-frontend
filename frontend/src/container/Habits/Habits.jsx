@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Grid, Container, Divider, Card } from 'semantic-ui-react';
+import { Grid, Divider, Card } from 'semantic-ui-react';
 import HeaderWithIcon from '../../components/Header/HeaderWithIcon'
 import * as api from '../../api_utils/api_habits'
 
@@ -18,10 +18,11 @@ class Habits extends Component {
    }
     render(){
         return(
-            <Container>
+            <Grid.Column width={13} textAlign="center">
                 <Grid.Row>{/* This is the Header*/}
                     <HeaderWithIcon
                         title="Habits"
+                        icon="trophy"
                         subtitle="Manage a list of all your habits" />
                 </Grid.Row>
                 <Divider/>
@@ -30,7 +31,8 @@ class Habits extends Component {
 
                     </Card.Group>
                 </Grid.Row>
-            </Container>
+                {this.getHabits()}
+            </Grid.Column>
         );
     }
 

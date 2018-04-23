@@ -5,11 +5,14 @@ import HeaderWithIcon from '../../components/Header/HeaderWithIcon'
 class Tasks extends Component {
     render() {
         return (
-            <Grid.Row>{/* This is the Header*/}
-                <HeaderWithIcon
-                    title="Tasks"
-                    subtitle="Manage your list of upcoming tasks" />
-            </Grid.Row>
+            <Grid.Column width={13} textAlign="center">
+                <Grid.Row>{/* This is the Header*/}
+                    <HeaderWithIcon
+                        icon="tasks"
+                        title="Tasks"
+                        subtitle="Manage your list of upcoming tasks" />
+                </Grid.Row>
+            </Grid.Column>
         );
     }
 }

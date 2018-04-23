@@ -5,11 +5,14 @@ import HeaderWithIcon from '../../components/Header/HeaderWithIcon'
 class Report extends Component {
     render() {
         return (
-            <Grid.Row>{/* This is the Header*/}
-                <HeaderWithIcon
-                    title="Report"
-                    subtitle="This page shows the report of all your habits" />
-            </Grid.Row>
+            <Grid.Column width={13} textAlign="center">
+                <Grid.Row>{/* This is the Header*/}
+                    <HeaderWithIcon
+                        icon="line graph"
+                        title="Report"
+                        subtitle="This page shows the report of all your habits" />
+                </Grid.Row>
+            </Grid.Column>
         );
     }
 }

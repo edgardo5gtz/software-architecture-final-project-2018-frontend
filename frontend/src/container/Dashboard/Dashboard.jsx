@@ -18,7 +18,7 @@ class Dashboard extends Component {
                     <Grid.Column width={3}> {/* This is the Sidebar*/}
                         <Navbar />
                     </Grid.Column>
-                    <Grid.Column width={13} textAlign="center">  {/* This is the Main Block*/}
+                      {/* This is the Main Block*/}
                         <Switch>
                             <Route path="/habits" component={Habits} />
                             <Route path="/tasks" component={Tasks} />
@@ -27,7 +27,6 @@ class Dashboard extends Component {
                             {/*404 page coming soon*/}
                             <Route path="/" render={()=><div>Not Found</div>} />
                         </Switch>
-                    </Grid.Column>
                 </Grid>
             </Container>
         );

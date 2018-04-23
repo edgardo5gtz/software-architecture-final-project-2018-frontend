@@ -11,25 +11,25 @@ class Navbar extends Component {
                 <Image src={ImageLogo} size='small' circular />
                 <Link to="/habits">
                     <Menu.Item name='habits'>
-                        <Icon name='home' />
+                        <Icon name='trophy' />
                         Habits
                     </Menu.Item>
                 </Link>
                 <Link to="/tasks">
                     <Menu.Item name='tasks'>
-                        <Icon name='gamepad' />
+                        <Icon name='tasks' />
                         Tasks
                     </Menu.Item>
                 </Link>
                 <Link to="/report">
                     <Menu.Item name='report'>
-                        <Icon name='camera' />
+                        <Icon name="line graph" />
                         Report
                     </Menu.Item>
                 </Link>
                 <Link to="/account">
                     <Menu.Item name='account'>
-                        <Icon name='camera' />
+                        <Icon name='settings' />
                         Account
                     </Menu.Item>
                 </Link>
