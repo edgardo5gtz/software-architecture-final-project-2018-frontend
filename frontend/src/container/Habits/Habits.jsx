@@ -3,19 +3,23 @@ import { Grid, Divider, Card } from 'semantic-ui-react';
 import HeaderWithIcon from '../../components/Header/HeaderWithIcon'
 import * as Api from '../../api_utils/api_habits'
 
-const items = [
-    {
-        header: 'Project Report - April',
-        description: 'Leverage agile frameworks to provide a robust synopsis for high level overviews.',
-        meta: 'ROI: 30%',
-    }
-];
+
 class Habits extends Component {
    constructor(props){
         super(props);
-        this.state = {test1 : []}
-        this.getHabits = this.getHabits.bind(this);
+        this.state = {habitsData : []}
    }
+   
+   componentWillMount(){
+        Api.getUserHabits(
+            this.props.userAccount
+        ).then(
+            response => this.setState({habitsData: response.data})
+        ).catch(
+            error => console.log(error)
+        );
+   }
+
     render(){
         return(
             <Grid.Column width={13} textAlign="center">
@@ -27,19 +31,25 @@ class Habits extends Component {
                 </Grid.Row>
                 <Divider/>
                 <Grid.Row>
-                    <Card.Group items={items}>
-
+                    <Card.Group>
+                        {this.state.habitsData.map((item, index) => {
+                            console.log(item);
+                            return(
+                                <Card key={index}>
+                                    <Card.Content>
+                                        <Card.Header>
+                                            {item.name}
+                                        </Card.Header>
+                                        <Card.Meta>
+                                        Score: {item.score}
+                                        </Card.Meta>
+                                    </Card.Content>
+                                </Card>
+                            );
+                        })}
                     </Card.Group>
                 </Grid.Row>
-                {this.getHabits()}
             </Grid.Column>
-        );
-    }
-
-    getHabits(){
-        console.log("hello")
-        Api.getUserHabits().then(
-            data => console.log(data)
         );
     }
 }

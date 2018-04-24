@@ -21,9 +21,9 @@ class Dashboard extends Component {
                       {/* This is the Main Block*/}
                         <Switch>
                             <Route path="/habits" 
-                                   render={(props) => <Account {...props} userAccount={this.props.userAccount} />} />/>
+                                   render={(props) => <Habits {...props} userAccount={this.props.userAccount} />} />/>
                             <Route path="/tasks" component={Tasks} />
-                            <Route path="/report" render={(props) => <Account {...props} userAccount={this.props.userAccount} />} />
+                            <Route path="/report" render={(props) => <Report {...props} userAccount={this.props.userAccount} />} />
                             <Route path="/account" 
                                    render={(props) => <Account {...props} userAccount={this.props.userAccount}/>}/>
                             {/*404 page coming soon*/}
