@@ -42,15 +42,21 @@ class App extends Component {
     handleLogIn(email){
         //this.setState({loggedIn: true});
         Api.findAccount(email).then(
-            response => console.log(response.statusText)
-        ).catch(error => console.log(error));
+            response => { 
+                if(response.status === 200){
+                    this.setState({loggedIn: true});
+                }
+            }).catch(error => console.log(error));
     }
 
     handleSignUp(name, email) {
         //this.setState({loggedIn: true});
         Api.registerAccount(name, email).then(
-            response => console.log(response.statusText)
-        ).catch(error => console.log(error));
+            response => {
+                if (response.status === 200) {
+                    this.setState({ loggedIn: true });
+                }
+            }).catch(error => console.log(error));
     }
 
 }
