@@ -13,9 +13,14 @@ import * as Api from './api_utils/api_accounts'
 class App extends Component {
     constructor(props){
         super(props);
+
+        // State 
         this.state = {loggedIn: false};
+        // Functions
         this.checkLogin = this.checkLogin.bind(this);
+        // Handlers
         this.handleLogIn = this.handleLogIn.bind(this);
+        this.handleSignUp = this.handleSignUp.bind(this);
         
     }
     render(){
@@ -29,13 +34,21 @@ class App extends Component {
             return <Dashboard/>;
         }
         else {
-            return <Home handleLogIn={this.handleLogIn}/>;
+            return <Home handleLogIn={this.handleLogIn}
+                         handleSignUp={this.handleSignUp}/>;
         }
     }
 
     handleLogIn(email){
         //this.setState({loggedIn: true});
         Api.findAccount(email).then(
+            response => console.log(response.statusText)
+        ).catch(error => console.log(error));
+    }
+
+    handleSignUp(name, email) {
+        //this.setState({loggedIn: true});
+        Api.registerAccount(name, email).then(
             response => console.log(response.statusText)
         ).catch(error => console.log(error));
     }

@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { Form, Button } from 'semantic-ui-react'
-import * as Api from '../../api_utils/api_accounts'
 
 class SignUp extends Component {
     constructor(props){
@@ -40,11 +39,7 @@ class SignUp extends Component {
     handleSubmit(event) {
         event.preventDefault();
         const {name, email} = this.state;
-        Api.registerAccount(name, email).then(
-            response => console.log(response.statusText)
-        ).catch(
-            error => console.log(error)
-        );
+        this.props.handleSignUp(name, email);
         
     }
 
