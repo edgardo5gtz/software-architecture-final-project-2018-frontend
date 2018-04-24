@@ -14,7 +14,7 @@ class Dashboard extends Component {
     render() {
         return (
             <Container>
-                <Grid>
+                <Grid id="dashboard-grid">
                     <Grid.Column width={3}> {/* This is the Sidebar*/}
                         <Navbar />
                     </Grid.Column>

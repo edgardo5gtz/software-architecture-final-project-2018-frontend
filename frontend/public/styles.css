@@ -1,3 +1,32 @@
 #app{
     margin-top: 20px;
+    height: 100%;
+}
+
+#app>.ui.container{
+    height: 100%;
+}
+
+#dashboard-grid{
+    height: 100%;
+}
+
+.marginTop{
+    margin-top: 20px;
+}
+
+.marginBottom{
+    margin-bottom:20px;
+}
+
+#add-button{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin-bottom: 60px;
+}
+
+.modal-margin-top{
+    margin-top: 150px !important;
+    margin-left: 525px !important;
 }
