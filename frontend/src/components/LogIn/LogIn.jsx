@@ -1,18 +1,40 @@
-import React from 'react'
+import React, {Component} from 'react'
 import { Form, Button } from 'semantic-ui-react'
 
-function LogIn(props){
-    return(
-        <Form size={props.size} onSubmit={props.handleLogInSubmit}>
-            <Form.Group>
-                <Form.Field width={props.width} label="Name" control="input" placeholder="Name"/>
-            </Form.Group>
-            <Form.Group>
-                <Form.Field width={props.width} label="Email" control="input" placeholder="something@otherthing.com"/>
-            </Form.Group>
-            <Button type='submit'>Submit</Button>
-        </Form>
-    );
+class LogIn extends Component {
+    constructor(props){
+        super(props);
+        // State
+        this.state = {email:""}
+
+        // Handlers
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+    }
+    render(){
+        return(
+            <Form size={this.props.size} onSubmit={this.handleSubmit}>
+                <Form.Group>
+                    <Form.Field width={this.props.width} 
+                                label="Email" 
+                                control="input" 
+                                name="email"
+                                placeholder="something@otherthing.com"
+                                onChange={this.handleChange}/>
+                </Form.Group>
+                <Button type='submit'>Submit</Button>
+            </Form>
+        );
+    }
+
+    handleSubmit(event){
+        event.preventDefault();
+        this.props.handleLogIn(this.state.email);
+    }
+
+    handleChange(event){
+        this.setState({ email : event.target.value});
+    }
 }
 
 export default LogIn;

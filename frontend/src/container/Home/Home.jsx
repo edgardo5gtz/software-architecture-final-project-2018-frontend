@@ -22,6 +22,8 @@ class Home extends Component {
         // Handle Submit Forms and Routing
         // handleLogIn comes from parent
         this.handleSignUpSubmit = this.handleSignUpSubmit.bind(this);
+        
+        
     }
 
     render() {
@@ -55,7 +57,7 @@ class Home extends Component {
 
     renderSelectedForm(){
         if(this.state.loggingIn){
-            return <LogIn size="large" width={4} handleLogInSubmit={this.props.handleLogIn}/>
+            return <LogIn size="large" width={4} handleLogIn={this.props.handleLogIn}/>
         }else if(this.state.signingUp){
             return <SignUp size="large" width={4} handleSignUpSubmit={this.handleSignUpSubmit}/>
         }
