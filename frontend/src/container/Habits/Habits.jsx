@@ -19,6 +19,13 @@ class Habits extends Component {
    constructor(props){
         super(props);
         this.state = {habitsData : []}
+
+        // Handlers
+        this.handleModalFormSubmit = this.handleModalFormSubmit.bind(this);
+        this.triggerSubmit = this.triggerSubmit.bind(this);
+        this.handleDifficultyChange = this.handleDifficultyChange.bind(this);
+        this.handleTypeChange = this.handleTypeChange.bind(this);
+        this.handleTitleChange = this.handleTitleChange.bind(this);
    }
    
    componentWillMount(){
@@ -72,25 +79,59 @@ class Habits extends Component {
                     <Modal.Header>Create a habit</Modal.Header>
                     <Modal.Content>
                         <Modal.Description>
-                            <Form>
+                            <Form onSubmit={this.triggerSubmit}>
                                 <Form.Group>
-                                    <Form.Field width={12} control={Input} label='Title' placeholder='First name' />
+                                    <Form.Field width={12} 
+                                                control={Input} 
+                                                label='Title' 
+                                                onChange={this.handleTitleChange}
+                                                placeholder='First name' />
                                 </Form.Group>
                                 <Form.Group>
-                                    <Form.Field width={12} control={Select} label='Difficulty' options={difficultyOptions} placeholder='Medium' />
+                                    <Form.Field width={12} 
+                                                control={Select} 
+                                                label='Difficulty' 
+                                                onChange={this.handleDifficultyChange}
+                                                options={difficultyOptions} placeholder='Medium' />
                                 </Form.Group>
                                 <Form.Group>
-                                    <Form.Field width={12} control={Select} label='Type' options={typeOptions} placeholder='Bad' />
+                                    <Form.Field width={12} 
+                                                control={Select} 
+                                                label='Type' 
+                                                options={typeOptions}
+                                                onChange={this.handleTypeChange}
+                                                placeholder='Bad' />
                                 </Form.Group>
                             </Form>
                         </Modal.Description>
                     </Modal.Content>
                     <Modal.Actions>
-                        <Button> Create </Button>
+                        <Button onClick={this.triggerSubmit} > Create </Button>
                     </Modal.Actions>
                 </Modal>
             </Grid.Column>
         );
+    }
+
+    handleTitleChange(event){
+        console.log(event.target.value);
+    }
+
+    handleDifficultyChange(event, result){
+        const {key, text, value} = result;
+        console.log(result);
+    }
+
+    handleTypeChange(event){
+        console.log(event.target.value);
+    }
+
+    handleModalFormSubmit(event){
+        console.log("Click");
+    }
+
+    triggerSubmit(event){
+        this.handleModalFormSubmit(event);
     }
 }
 
