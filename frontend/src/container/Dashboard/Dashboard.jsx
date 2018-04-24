@@ -20,10 +20,12 @@ class Dashboard extends Component {
                     </Grid.Column>
                       {/* This is the Main Block*/}
                         <Switch>
-                            <Route path="/habits" component={Habits} />
+                            <Route path="/habits" 
+                                   render={(props) => <Account {...props} userAccount={this.props.userAccount} />} />/>
                             <Route path="/tasks" component={Tasks} />
-                            <Route path="/report" component={Report} />
-                            <Route path="/account" component={Account} />
+                            <Route path="/report" render={(props) => <Account {...props} userAccount={this.props.userAccount} />} />
+                            <Route path="/account" 
+                                   render={(props) => <Account {...props} userAccount={this.props.userAccount}/>}/>
                             {/*404 page coming soon*/}
                             <Route path="/" render={()=><div>Not Found</div>} />
                         </Switch>

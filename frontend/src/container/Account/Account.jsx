@@ -19,9 +19,7 @@ class Account extends Component {
                 </Grid.Row>
                 <Grid.Row>
                     <Header as="h2">
-                        Name:
-                        <br/>
-                        Email:
+                        Account: {this.props.userAccount}
                     </Header>
                 </Grid.Row>
             </Grid.Column>

@@ -15,7 +15,7 @@ class App extends Component {
         super(props);
 
         // State 
-        this.state = {loggedIn: false};
+        this.state = {loggedIn: false, userAccount: ""};
         // Functions
         this.checkLogin = this.checkLogin.bind(this);
         // Handlers
@@ -31,7 +31,7 @@ class App extends Component {
 
     checkLogin() {
         if (this.state.loggedIn) {
-            return <Dashboard/>;
+            return <Dashboard userAccount={this.state.userAccount}/>;
         }
         else {
             return <Home handleLogIn={this.handleLogIn}
@@ -44,7 +44,7 @@ class App extends Component {
         Api.findAccount(email).then(
             response => { 
                 if(response.status === 200){
-                    this.setState({loggedIn: true});
+                    this.setState({loggedIn: true, userAccount: email});
                 }
             }).catch(error => console.log(error));
     }
@@ -54,7 +54,7 @@ class App extends Component {
         Api.registerAccount(name, email).then(
             response => {
                 if (response.status === 200) {
-                    this.setState({ loggedIn: true });
+                    this.setState({ loggedIn: true, userAccount: email });
                 }
             }).catch(error => console.log(error));
     }
