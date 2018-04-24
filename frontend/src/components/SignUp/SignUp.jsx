@@ -1,15 +1,56 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { Form, Button } from 'semantic-ui-react'
+import * as Api from '../../api_utils/api_accounts'
 
-function SignUp(props) {
-    return (
-        <Form size={props.size} onSubmit={props.handleSignUpSubmit}>
-            <Form.Group>
-                <Form.Field width={props.width} label="Email Account" control="input" placeholder="something@otherthing.com"/>
-            </Form.Group>
-            <Button type='submit'>Submit</Button>
-        </Form>
-    );
+class SignUp extends Component {
+    constructor(props){
+        super(props);
+
+         // State
+        this.state = {email:""}
+
+        // Handlers
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+    }
+    render(){
+        return (
+            <Form size={this.props.size} onSubmit={this.handleSubmit}>
+                <Form.Group>
+                    <Form.Field width={this.props.width}
+                        label="Name"
+                        control="input"
+                        name="name"
+                        placeholder="Name"
+                        onChange={this.handleChange} />
+                </Form.Group>
+                <Form.Group>
+                    <Form.Field width={this.props.width}
+                        label="Email"
+                        control="input"
+                        name="email"
+                        placeholder="something@otherthing.com" 
+                        onChange={this.handleChange}/>
+                </Form.Group>
+                <Button type='submit'>Submit</Button>
+            </Form>
+        );
+    }
+
+    handleSubmit(event) {
+        event.preventDefault();
+        const {name, email} = this.state;
+        Api.registerAccount(name, email).then(
+            response => console.log(response.statusText)
+        ).catch(
+            error => console.log(error)
+        );
+        
+    }
+
+    handleChange(event) {
+        this.setState({ [event.target.name]: event.target.value });
+    }
 }
 
 export default SignUp;

@@ -9,10 +9,10 @@ const BASE_URL = 'http://192.168.99.100:8081/accounts';
 
 export {registerAccount, findAccount};
 
-function registerAccount(email){
+function registerAccount(name, email){
     return axios.post(
             BASE_URL + '/register',
-           email 
+            {name, email} 
         ).then(
             response => { return response }
         ).catch(
