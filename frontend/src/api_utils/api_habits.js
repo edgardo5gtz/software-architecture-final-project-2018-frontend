@@ -24,9 +24,10 @@ function getUserHabits(user) {
     ).catch(error => console.log(error));
 }
 
-function putUserHabits(habit){
+function putUserHabits(id, habit){
     return axios.put(
-        BASE_URL, habit
+        BASE_URL + '/' + id, 
+        habit
     ).then(
         response => { return response }
     ).catch(error => console.log(error));
