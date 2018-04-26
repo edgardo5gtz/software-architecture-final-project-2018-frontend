@@ -41,7 +41,10 @@ class Tasks extends Component {
 
     componentWillMount(){
         Api.getUserTasks(this.props.userAccount).then(
-            response => {this.setState({taskList: response.data}); console.log(this.state)}
+            response => {
+                const taskList = _.filter(response.data, { account: this.props.userAccount })
+                this.setState({ taskList })
+            }
         );
     }
 

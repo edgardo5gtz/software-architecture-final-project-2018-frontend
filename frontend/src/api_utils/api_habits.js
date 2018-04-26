@@ -18,7 +18,7 @@ function postUserHabits(habit) {
 function getUserHabits(user) {
     return axios.get(
         BASE_URL,
-        user
+        {account: user}
     ).then(
         response => { return response }
     ).catch(error => console.log(error));
