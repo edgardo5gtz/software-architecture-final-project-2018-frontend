@@ -22,7 +22,7 @@ class Dashboard extends Component {
                         <Switch>
                             <Route path="/habits" 
                                    render={(props) => <Habits {...props} userAccount={this.props.userAccount} />} />/>
-                            <Route path="/tasks" component={Tasks} />
+                            <Route path="/tasks" render={(props) => <Tasks {...props} userAccount={this.props.userAccount}/>} />
                             <Route path="/report" render={(props) => <Report {...props} userAccount={this.props.userAccount} />} />
                             <Route path="/account" 
                                    render={(props) => <Account {...props} userAccount={this.props.userAccount}/>}/>

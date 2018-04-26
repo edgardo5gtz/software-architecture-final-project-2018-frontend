@@ -67,6 +67,16 @@
     color: white;
 }
 
+.ui.card>.content,
+.ui.cards>.ui.card>.content>.header.task-header {
+    color: black;
+}
+
+.ui.card>.content,
+.ui.cards>.ui.card>.content>.meta.task-meta {
+    color: black;
+}
+
 .ui.card>.extra.content,
 .ui.cards>.ui.card>.extra.content {
     background-color: transparent;
