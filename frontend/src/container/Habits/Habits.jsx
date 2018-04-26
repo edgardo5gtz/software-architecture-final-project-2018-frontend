@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { Grid, Divider, Card, Button, Pagination, Modal, Form, Input, Select } from 'semantic-ui-react';
+import { Route } from 'react-router-dom' 
 import HeaderWithIcon from '../../components/Header/HeaderWithIcon'
+import HabitsList from './HabitsList'
 import * as Api from '../../api_utils/api_habits'
 import _ from 'lodash'
 
@@ -64,29 +66,11 @@ class Habits extends Component {
                     <Pagination totalPages={5} value={0}/>
                 </Grid.Row>
                 <Grid.Row>
-                    <Card.Group>
-                        {this.state.userHabits.map((item) => {
-                            return(
-                                <Card key={item.id}>
-                                    <Card.Content>
-                                        <Card.Header>
-                                            {item.name}
-                                        </Card.Header>
-                                        <Card.Meta>
-                                        Score: {item.score}
-                                        </Card.Meta>
-                                    </Card.Content>
-                                    <Card.Content extra>
-                                        <div className='ui three buttons'>
-                                            <Button basic color='green' itemID={item.id} onClick={this.handleCardDo}>Do</Button>
-                                            <Button basic color='blue' itemID={item.id} onClick={this.handleCardEdit}>Edit</Button>
-                                            <Button basic color='red' itemID={item.id} onClick={this.handleCardDelete}>Delete</Button>
-                                        </div>
-                                    </Card.Content>
-                                </Card>
-                            );
-                        })}
-                    </Card.Group>
+                    <Route to='/' 
+                           render={()=><HabitsList userHabits={this.state.userHabits}
+                                                   handleCardDo={this.handleCardDo}
+                                                   handleCardDelete={this.handleCardDelete}
+                                                   handleCardEdit={this.handleCardDelete}/>} />
                 </Grid.Row>
                 <Modal size='tiny' className="modal-margin-top" trigger={<Button id="add-button" 
                                         size="huge" 
