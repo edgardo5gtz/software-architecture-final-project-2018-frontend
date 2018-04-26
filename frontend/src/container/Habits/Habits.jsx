@@ -66,7 +66,7 @@ class Habits extends Component {
     render(){
         return(
             <Grid.Column width={13} textAlign="center">
-                <Grid.Row>{/* This is the Header*/}
+                <Grid.Row className="marginTop">{/* This is the Header*/}
                     <HeaderWithIcon
                         title="Habits"
                         icon="trophy"
@@ -74,7 +74,6 @@ class Habits extends Component {
                 </Grid.Row>
                 <Divider/>
                 <Grid.Row className="marginTop marginBottom">
-                    <Pagination totalPages={5} value={0}/>
                 </Grid.Row>
                 <Grid.Row>
                     {this.renderListOrDetails()}

@@ -1,22 +1,61 @@
 #app{
-    margin-top: 20px;
     height: 100%;
-}
+   background: rgb(179, 2, 134);
+   background: linear-gradient(209deg, rgba(179, 2, 134, 0.9419117988992471) 0%, rgba(205, 10, 202, 0.9363095580028886) 45%, rgba(255, 0, 207, 0.9419117988992471) 100%);
+   }
 
 #app>.ui.container{
     height: 100%;
+   
+}
+
+#logIn{
+    margin-top: 50px;
+    margin-left : 280px;
+}
+
+#signUp{
+    margin-top: 50px;
+    margin-left: 280px;
+}
+
+#homeIcon{
+    color:gold;
+    margin-top: 70px;
+    margin-left: 400px
+}
+
+#homeHeader{
+    color: white;
+}
+
+#homeHeader>.sub.header {
+    color: white;
 }
 
 #dashboard-grid{
     height: 100%;
+    background-color: white;
+}
+
+#homeContent{
+    margin-top: 50px;
 }
 
 .marginTop{
-    margin-top: 20px;
+    margin-top: 40px;
+}
+
+.marginLeft{
+    margin-left: 20px;
 }
 
 .marginBottom{
     margin-bottom:20px;
+}
+
+.noMarginRight {
+    margin-right: 0px;
 }
 
 #add-button{
@@ -81,3 +120,20 @@
 .ui.cards>.ui.card>.extra.content {
     background-color: transparent;
 }
+
+.ui.left.visible.sidebar{
+    background-color:purple;
+}
+
+.ui.left.visible.sidebar.menu>i {
+    color: gold;
+    margin-top: 50px;
+    margin-left: 50px;
+    margin-bottom: 50px;
+}
+
+.ui.left.visible.sidebar.menu>a>.item {
+    color: white;
+    font-size: 18px;
+}
+

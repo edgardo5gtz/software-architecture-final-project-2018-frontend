@@ -14,7 +14,7 @@ class SignUp extends Component {
     }
     render(){
         return (
-            <Form size={this.props.size} onSubmit={this.handleSubmit}>
+            <Form id="signUp" size={this.props.size} onSubmit={this.handleSubmit}>
                 <Form.Group>
                     <Form.Field width={this.props.width}
                         label="Name"

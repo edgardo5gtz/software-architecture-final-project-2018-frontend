@@ -7,8 +7,8 @@ class Navbar extends Component {
 
     render(){
         return(
-            <Sidebar as={Menu} visible={true} vertical inverted>
-                <Image src={ImageLogo} size='small' circular />
+            <Sidebar as={Menu} visible={true} vertical>
+                <Icon name='trophy' size='massive'/>
                 <Link to="/habits">
                     <Menu.Item name='habits'>
                         <Icon name='trophy' />

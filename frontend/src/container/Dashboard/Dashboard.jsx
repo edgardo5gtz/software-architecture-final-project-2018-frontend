@@ -13,24 +13,23 @@ import Account from '../Account/Account'
 class Dashboard extends Component {
     render() {
         return (
-            <Container>
-                <Grid id="dashboard-grid">
-                    <Grid.Column width={3}> {/* This is the Sidebar*/}
-                        <Navbar />
-                    </Grid.Column>
-                      {/* This is the Main Block*/}
-                        <Switch>
-                            <Route path="/habits" 
-                                   render={(props) => <Habits {...props} userAccount={this.props.userAccount} />} />/>
-                            <Route path="/tasks" render={(props) => <Tasks {...props} userAccount={this.props.userAccount}/>} />
-                            <Route path="/report" render={(props) => <Report {...props} userAccount={this.props.userAccount} />} />
-                            <Route path="/account" 
-                                   render={(props) => <Account {...props} userAccount={this.props.userAccount}/>}/>
-                            {/*404 page coming soon*/}
-                            <Route path="/" render={()=><div>Not Found</div>} />
-                        </Switch>
-                </Grid>
-            </Container>
+            <Grid id="dashboard-grid">
+                <Grid.Column width={3}> {/* This is the Sidebar*/}
+                    <Navbar />
+                </Grid.Column>
+                {/* This is the Main Block*/}
+                <Switch>
+                    <Route path="/habits"
+                        render={(props) => <Habits {...props} userAccount={this.props.userAccount} />} />/>
+                            <Route path="/tasks" render={(props) => <Tasks {...props} userAccount={this.props.userAccount} />} />
+                    <Route path="/report" render={(props) => <Report {...props} userAccount={this.props.userAccount} />} />
+                    <Route path="/account"
+                        render={(props) => <Account {...props} userAccount={this.props.userAccount} />} />
+                    {/*404 page coming soon*/}
+                    <Route path="/" render={() => <div>Not Found</div>} />
+                </Switch>
+            </Grid>
+        
         );
     }
 

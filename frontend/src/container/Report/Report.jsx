@@ -54,7 +54,7 @@ class Report extends Component {
     render() {
         return (
             <Grid.Column width={13} textAlign="center">
-                <Grid.Row>{/* This is the Header*/}
+                <Grid.Row className="marginTop">{/* This is the Header*/}
                     <HeaderWithIcon
                         icon="line graph"
                         title="Report"

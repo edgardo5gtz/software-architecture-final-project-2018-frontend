@@ -1,6 +1,6 @@
 // Import react global packages
 import React, { Component } from 'react'
-import { Grid, Header, Button, Container } from 'semantic-ui-react'
+import { Grid, Header, Button, Container, Icon } from 'semantic-ui-react'
 
 // Import Components
 import SignUp from '../../components/SignUp/SignUp'
@@ -26,16 +26,16 @@ class Home extends Component {
 
     render() {
         return (
-            <Container>
+            <Container id="homePage">
                 <Grid>
-                    <Grid.Row>
+                    <Grid.Row id="homeContent">
                         <Grid.Column floated="right" width={3}>
-                            <Button content='Log In' primary onClick={this.renderLogIn}/>
-                            <Button content='Sign Up' secondary onClick={this.renderSignUp}/>
+                            <Button basic color='yellow' content='Log In'  onClick={this.renderLogIn}/>
+                            <Button basic color='orange' content='Sign Up'  onClick={this.renderSignUp}/>
                         </Grid.Column>
                     </Grid.Row>
                     <Grid.Row verticalAlign="middle" centered>
-                        <Header as="h1" textAlign="center">
+                        <Header id="homeHeader" as="h1" textAlign="center">
                             Home page
                                     <Header.Subheader>
                                 Catchy phrase all your dreams come true blablabla
@@ -50,9 +50,11 @@ class Home extends Component {
 
     renderSelectedForm(){
         if(this.state.loggingIn){
-            return <LogIn size="large" width={4} handleLogIn={this.props.handleLogIn}/>
+            return <LogIn size="large" width={10} handleLogIn={this.props.handleLogIn}/>
         }else if(this.state.signingUp){
-            return <SignUp size="large" width={4} handleSignUp={this.props.handleSignUp}/>
+            return <SignUp size="large" width={10} handleSignUp={this.props.handleSignUp}/>
+        }else{
+            return <Icon name='trophy' size='massive' id="homeIcon"/>
         }
     }
 
