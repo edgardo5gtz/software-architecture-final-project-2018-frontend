@@ -40,8 +40,8 @@ class Report extends Component {
             this.props.userAccount
         ).then(
             response => {
-                goodHabits = _.filter(response.data, {kind: "good"}); 
-                badHabits = _.filter(response.data, { kind: "bad" }); 
+                goodHabits = _.filter(response.data, (item) => item.kind !== "bad" ); 
+                badHabits = _.filter(response.data, (item) => item.kind !== "good"); 
                 this.setState(prevState => ({
                     ...prevState,
                     goodHabits,
