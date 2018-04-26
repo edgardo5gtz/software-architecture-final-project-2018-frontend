@@ -36,7 +36,7 @@ function deleteUserHabits(id){
     return axios.delete(
         BASE_URL + '/' + id
     ).then(
-        response => { return response }
+        response => { console.log(response);return response }
     ).catch(
         error => console.log(error)
     );

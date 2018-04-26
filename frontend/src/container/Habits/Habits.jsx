@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
-import { Grid, Divider, Card, Button, Container, Pagination, Modal, Header, Image, Form, Input, Select } from 'semantic-ui-react';
+import { Grid, Divider, Card, Button, Pagination, Modal, Form, Input, Select } from 'semantic-ui-react';
 import HeaderWithIcon from '../../components/Header/HeaderWithIcon'
 import * as Api from '../../api_utils/api_habits'
+import _ from 'lodash'
 
 const difficultyOptions = [
     { key: 'E', text: 'Easy', value: 'easy'},
@@ -18,7 +19,14 @@ const typeOptions = [
 class Habits extends Component {
    constructor(props){
         super(props);
-        this.state = {habitsData : []}
+        this.state = {
+            userHabits: [],
+            newHabit : {
+                title:"", 
+                difficulty:"",
+                type:"",
+            }
+        }
 
         // Handlers
         this.handleModalFormSubmit = this.handleModalFormSubmit.bind(this);
@@ -26,13 +34,16 @@ class Habits extends Component {
         this.handleDifficultyChange = this.handleDifficultyChange.bind(this);
         this.handleTypeChange = this.handleTypeChange.bind(this);
         this.handleTitleChange = this.handleTitleChange.bind(this);
+        this.handleCardDo = this.handleCardDo.bind(this);
+        this.handleCardDelete = this.handleCardDelete.bind(this);
+        this.handleCardEdit = this.handleCardEdit.bind(this);
    }
    
    componentWillMount(){
         Api.getUserHabits(
             this.props.userAccount
         ).then(
-            response => this.setState({habitsData: response.data})
+            response => this.setState({userHabits: response.data})
         ).catch(
             error => console.log(error)
         );
@@ -54,10 +65,9 @@ class Habits extends Component {
                 </Grid.Row>
                 <Grid.Row>
                     <Card.Group>
-                        {this.state.habitsData.map((item, index) => {
-                            console.log(item);
+                        {this.state.userHabits.map((item) => {
                             return(
-                                <Card key={index}>
+                                <Card key={item.id}>
                                     <Card.Content>
                                         <Card.Header>
                                             {item.name}
@@ -65,6 +75,13 @@ class Habits extends Component {
                                         <Card.Meta>
                                         Score: {item.score}
                                         </Card.Meta>
+                                    </Card.Content>
+                                    <Card.Content extra>
+                                        <div className='ui three buttons'>
+                                            <Button basic color='green' itemID={item.id} onClick={this.handleCardDo}>Do</Button>
+                                            <Button basic color='blue' itemID={item.id} onClick={this.handleCardEdit}>Edit</Button>
+                                            <Button basic color='red' itemID={item.id} onClick={this.handleCardDelete}>Delete</Button>
+                                        </div>
                                     </Card.Content>
                                 </Card>
                             );
@@ -85,7 +102,7 @@ class Habits extends Component {
                                                 control={Input} 
                                                 label='Title' 
                                                 onChange={this.handleTitleChange}
-                                                placeholder='First name' />
+                                                placeholder='title' />
                                 </Form.Group>
                                 <Form.Group>
                                     <Form.Field width={12} 
@@ -113,21 +130,63 @@ class Habits extends Component {
         );
     }
 
-    handleTitleChange(event){
-        console.log(event.target.value);
+    handleCardDelete(event, result){
+        const id = result.itemID;
+        Api.deleteUserHabits(id).then((response)=>{
+                var userHabits = this.state.userHabits;
+                userHabits = _.remove(userHabits, (item) => { return result.itemID === item.id });
+                this.setState(userHabits);
+            }
+        );
     }
 
-    handleDifficultyChange(event, result){
-        const {key, text, value} = result;
+    handleCardDo(event, result){
         console.log(result);
     }
 
-    handleTypeChange(event){
-        console.log(event.target.value);
+    handleCardEdit(event, result){
+        console.log(result);
+    }
+    
+    // NOT THE BEST WAY NEED TO FIND ANOTHER BUT SHORT IN TIME
+    handleTitleChange(event, result){
+        this.setState(prevState => ({
+            newHabit: {
+                ...prevState.newHabit,
+                title: result.value
+            }
+        }));
+    }
+
+    handleDifficultyChange(event, result){
+        this.setState(prevState => ({
+            newHabit: {
+                ...prevState.newHabit,
+                difficulty: result.value
+            }
+        }));
+    }
+
+    handleTypeChange(event, result){
+        this.setState(prevState => ({
+            newHabit: {
+                ...prevState.newHabit,
+                type: result.value
+            }
+        }));
     }
 
     handleModalFormSubmit(event){
-        console.log("Click");
+        // CRYING FROM THE INSIDE
+        const name = this.state.newHabit.title;
+        const difficulty = this.state.newHabit.difficulty;
+        const kind = this.state.newHabit.type
+        const score = 0;
+        const account = this.props.userAccount;
+       
+        const habit = {name, difficulty, kind, score, account}
+        Api.postUserHabits(habit);
+        
     }
 
     triggerSubmit(event){
