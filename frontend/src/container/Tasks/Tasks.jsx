@@ -60,7 +60,6 @@ class Tasks extends Component {
                 </Grid.Row>
                 <Divider />
                 <Grid.Row className="marginTop marginBottom">
-                    <Pagination totalPages={5} value={0} />
                 </Grid.Row>
                 <Grid.Row>
                     {this.renderListOrDetails()}
@@ -77,9 +76,9 @@ class Tasks extends Component {
                 handleCardDo={this.handleCardDo}
                 handleCardDelete={this.handleCardDelete}
                 handleCardEdit={this.handleCardEdit}
-                handleDescriptionChange={this.handleDifficultyChange}
+                handleDescriptionChange={this.handleDescriptionChange}
                 handleTitleChange={this.handleTitleChange}
-                handleDateChange={this.handleTypeChange}
+                handleDateChange={this.handleDateChange}
                 handleReminderDaysChange={this.handleReminderDaysChange}
                 handleReminderTimeChange = {this.handleReminderTimeChange}
                 triggerSubmit={this.triggerSubmit}
@@ -135,6 +134,7 @@ class Tasks extends Component {
     }
 
     handleDateChange(event, result) {
+        console.log(result);
         this.setState(prevState => ({
             newTask: {
                 ...prevState.newTask,
@@ -170,7 +170,9 @@ class Tasks extends Component {
         const reminder_time = this.state.newTask.reminder_time
         const account = this.props.userAccount;
 
+
         const task = { title, description, due_date, reminder_days, reminder_time, account }
+
         Api.postUserTasks(task).then(
             Api.getUserTasks(
                 this.props.userAccount

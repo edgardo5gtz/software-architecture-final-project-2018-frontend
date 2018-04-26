@@ -14,7 +14,7 @@ const TaskList = function (props) {
                                     {item.title}
                                 </Card.Header>
                                 <Card.Meta className="task-meta">
-                                    Due Data {item.due_date}
+                                    Due Date {item.due_date}
                                 </Card.Meta>
                                 {item.description}
                             </Card.Content>
@@ -56,7 +56,7 @@ const TaskList = function (props) {
                                     control={TextArea}
                                     label='Description'
                                     onChange={props.handleDescriptionChange}
-                                    placeholder='Medium' />
+                                    placeholder='Description' />
                             </Form.Group>
                             <Form.Group>
                                 <Form.Field width={12}

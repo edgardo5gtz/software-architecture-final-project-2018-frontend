@@ -59,7 +59,7 @@ class HabitsDetails extends Component {
 
 
     handleTitleUpdate(event, result) {
-        console.log(result);
+        console.log(result.value);
         this.setState(prevState => ({
             updateHabit: {
                 ...prevState.updateHabit,
@@ -96,9 +96,9 @@ class HabitsDetails extends Component {
         const habit = { name, difficulty, kind, score, account }
         console.log(habit);
         Api.putUserHabits(id, habit).then(
-            response => {console.log(response);return }
+            response => { console.log(response); this.setState({ redirect: true });}
         );
-        this.setState({redirect: true});
+       
     }
     
 }

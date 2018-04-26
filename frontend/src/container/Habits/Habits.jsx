@@ -123,7 +123,19 @@ class Habits extends Component {
     }
 
     handleCardDo(event, result){
-        console.log(result);
+        const id = result.itemID
+        const updateHabit = _.filter(this.state.userHabits, (item) => item.id == id)[0];
+        const kind = updateHabit.kind;
+        console.log(kind);
+        Api.doUserHabits(id, kind).then(
+            Api.getUserHabits(
+                this.props.userAccount
+            ).then(
+                response => this.setState({ userHabits: response.data })
+            ).catch(
+                error => console.log(error)
+            )
+        );
     }
 
     handleCardEdit(event, result){

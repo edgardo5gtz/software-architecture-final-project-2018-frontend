@@ -5,7 +5,7 @@ const BASE_URL = 'http://192.168.99.100:8082/habits'
 //const VM_IP = '192.168.99.100'
 //const BASE_URL_VM = `http://${VM_IP}:8082/habits`;
 
-export {postUserHabits, getUserHabits, deleteUserHabits, putUserHabits};
+export { postUserHabits, getUserHabits, deleteUserHabits, putUserHabits, doUserHabits};
 
 function postUserHabits(habit) {
     return axios.post(
@@ -30,6 +30,15 @@ function putUserHabits(id, habit){
         habit
     ).then(
         response => { return response }
+    ).catch(error => console.log(error));
+}
+
+function doUserHabits(id, kind) {
+    return axios.post(
+        BASE_URL + '/' + id + '/do',
+        kind
+    ).then(
+        response => { console.log(response); return response }
     ).catch(error => console.log(error));
 }
 
