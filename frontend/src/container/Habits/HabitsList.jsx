@@ -1,5 +1,6 @@
 import React from 'react'
 import { Card, Button } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
 
 
 const HabitsList = function(props){
@@ -19,7 +20,11 @@ const HabitsList = function(props){
                         <Card.Content extra>
                             <div className='ui three buttons'>
                                 <Button basic color='green' itemID={item.id} onClick={props.handleCardDo}>Do</Button>
-                                <Button basic color='blue' itemID={item.id} onClick={props.handleCardEdit}>Edit</Button>
+                               
+                                <Button basic color='blue' itemID={item.id} onClick={props.handleCardEdit}> 
+                                    <Link to={`${props.match.url}/${item.id}`}> Edit </Link>
+                                </Button>
+                               
                                 <Button basic color='red' itemID={item.id} onClick={props.handleCardDelete}>Delete</Button>
                             </div>
                         </Card.Content>

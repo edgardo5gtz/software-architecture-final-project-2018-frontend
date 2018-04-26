@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
-import { Grid, Divider, Card, Button, Pagination, Modal, Form, Input, Select } from 'semantic-ui-react';
-import { Route } from 'react-router-dom' 
+import { Grid, Divider, Button, Pagination, Modal, Form, Input, Select } from 'semantic-ui-react';
+import { Route, Redirect } from 'react-router-dom' 
 import HeaderWithIcon from '../../components/Header/HeaderWithIcon'
 import HabitsList from './HabitsList'
+import HabitsDetail from './HabitsDetail'
 import * as Api from '../../api_utils/api_habits'
 import _ from 'lodash'
 
@@ -23,6 +24,7 @@ class Habits extends Component {
         super(props);
         this.state = {
             userHabits: [],
+            renderList: true,
             newHabit : {
                 title:"", 
                 difficulty:"",
@@ -30,6 +32,8 @@ class Habits extends Component {
             }
         }
 
+        //Routing
+       this.renderListOrDetails = this.renderListOrDetails.bind(this);
         // Handlers
         this.handleModalFormSubmit = this.handleModalFormSubmit.bind(this);
         this.triggerSubmit = this.triggerSubmit.bind(this);
@@ -39,6 +43,9 @@ class Habits extends Component {
         this.handleCardDo = this.handleCardDo.bind(this);
         this.handleCardDelete = this.handleCardDelete.bind(this);
         this.handleCardEdit = this.handleCardEdit.bind(this);
+        this.onBackButtonEvent = this.onBackButtonEvent.bind(this);
+
+       window.onpopstate = this.onBackButtonEvent;
    }
    
    componentWillMount(){
@@ -51,9 +58,12 @@ class Habits extends Component {
         );
    }
 
+   componentWillUnmount(){
+        window.onpopstate = null;
+   }
+
     render(){
         return(
-
             <Grid.Column width={13} textAlign="center">
                 <Grid.Row>{/* This is the Header*/}
                     <HeaderWithIcon
@@ -66,11 +76,7 @@ class Habits extends Component {
                     <Pagination totalPages={5} value={0}/>
                 </Grid.Row>
                 <Grid.Row>
-                    <Route to='/' 
-                           render={()=><HabitsList userHabits={this.state.userHabits}
-                                                   handleCardDo={this.handleCardDo}
-                                                   handleCardDelete={this.handleCardDelete}
-                                                   handleCardEdit={this.handleCardDelete}/>} />
+                    {this.renderListOrDetails()}
                 </Grid.Row>
                 <Modal size='tiny' className="modal-margin-top" trigger={<Button id="add-button" 
                                         size="huge" 
@@ -114,6 +120,18 @@ class Habits extends Component {
         );
     }
 
+    renderListOrDetails(){
+        if(this.state.renderList){
+            return <HabitsList  match = {this.props.match} 
+                    userHabits={this.state.userHabits}
+                    handleCardDo={this.handleCardDo}
+                    handleCardDelete={this.handleCardDelete}
+                    handleCardEdit={this.handleCardEdit} />
+        }else{
+            return <Route path={`${this.props.match.url}/:id`} component={HabitsDetail}/>
+        }
+    }
+
     handleCardDelete(event, result){
         const id = result.itemID;
         Api.deleteUserHabits(id).then((response)=>{
@@ -129,7 +147,8 @@ class Habits extends Component {
     }
 
     handleCardEdit(event, result){
-        console.log(result);
+        console.log();
+        this.setState({renderList: false});
     }
     
     // NOT THE BEST WAY NEED TO FIND ANOTHER BUT SHORT IN TIME
@@ -171,6 +190,10 @@ class Habits extends Component {
         const habit = {name, difficulty, kind, score, account}
         Api.postUserHabits(habit);
         
+    }
+
+    onBackButtonEvent(event){
+        this.setState({renderList: true})
     }
 
     triggerSubmit(event){
