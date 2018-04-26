@@ -34,6 +34,7 @@ class Habits extends Component {
 
         //Routing
        this.renderListOrDetails = this.renderListOrDetails.bind(this);
+       this.handleRedirect = this.handleRedirect.bind(this);
         // Handlers
         this.handleModalFormSubmit = this.handleModalFormSubmit.bind(this);
         this.triggerSubmit = this.triggerSubmit.bind(this);
@@ -99,7 +100,10 @@ class Habits extends Component {
                                 />
         }else{
             return <Route path={`${this.props.match.url}/:id`} 
-                render={(props) => <HabitsDetail {...props} habits = {this.state.userHabits}
+                render={(props) => <HabitsDetail {...props} 
+                                            handleRedirect = {this.handleRedirect}
+                                            userAccount={this.props.userAccount}
+                                            habits = {this.state.userHabits}
                                             difficultyOptions={difficultyOptions}
                                             typeOptions={typeOptions}/>}/>
         }
@@ -115,12 +119,15 @@ class Habits extends Component {
         );
     }
 
+    handleRedirect(){
+        this.setState({renderList: true});
+    }
+
     handleCardDo(event, result){
         console.log(result);
     }
 
     handleCardEdit(event, result){
-        console.log();
         this.setState({renderList: false});
     }
     
@@ -161,7 +168,16 @@ class Habits extends Component {
         const account = this.props.userAccount;
        
         const habit = {name, difficulty, kind, score, account}
-        Api.postUserHabits(habit);
+        Api.postUserHabits(habit).then(
+            Api.getUserHabits(
+                this.props.userAccount
+            ).then(
+                response => this.setState({ userHabits: response.data })
+            ).catch(
+                error => console.log(error)
+            )
+        );
+
         
     }
 

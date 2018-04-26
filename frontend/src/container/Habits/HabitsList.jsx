@@ -2,6 +2,19 @@ import React from 'react'
 import { Card, Button, Form, Input, Select, Modal } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 
+function handleColor(score){
+    if(score < 0){
+        return "red"
+    }else if(score <= 10){
+        return 'orange'
+    } else if (score <= 40) {
+        return 'yellow'
+    } else if (score <= 50) {
+        return 'green'
+    } else if (score > 50) {
+        return 'blue'
+    }
+}
 
 const HabitsList = function(props){
     return(
@@ -9,8 +22,8 @@ const HabitsList = function(props){
             <Card.Group>
                 {props.userHabits.map((item) => {
                     return (
-                        <Card key={item.id}>
-                            <Card.Content>
+                        <Card  key={item.id}>
+                            <Card.Content className={handleColor(item.score)}>
                                 <Card.Header>
                                     {item.name}
                                 </Card.Header>
@@ -76,29 +89,4 @@ const HabitsList = function(props){
     );
 }
 
-export default HabitsList
-
-/*
-<Card.Group>
-    {this.state.userHabits.map((item) => {
-        return (
-            <Card key={item.id}>
-                <Card.Content>
-                    <Card.Header>
-                        {item.name}
-                    </Card.Header>
-                    <Card.Meta>
-                        Score: {item.score}
-                    </Card.Meta>
-                </Card.Content>
-                <Card.Content extra>
-                    <div className='ui three buttons'>
-                        <Button basic color='green' itemID={item.id} onClick={this.handleCardDo}>Do</Button>
-                        <Button basic color='blue' itemID={item.id} onClick={this.handleCardEdit}>Edit</Button>
-                        <Button basic color='red' itemID={item.id} onClick={this.handleCardDelete}>Delete</Button>
-                    </div>
-                </Card.Content>
-            </Card>
-        );
-    })}
-</Card.Group>*/
+export default HabitsList;
