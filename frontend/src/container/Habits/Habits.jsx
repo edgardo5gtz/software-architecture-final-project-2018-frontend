@@ -50,10 +50,14 @@ class Habits extends Component {
    }
    
    componentWillMount(){
+       
         Api.getUserHabits(
             this.props.userAccount
         ).then(
-            response => this.setState({userHabits: response.data})
+            response => {
+                const userHabits = _.filter(response.data, {account: this.props.userAccount}) 
+                this.setState({ userHabits})
+            }
         ).catch(
             error => console.log(error)
         );
@@ -179,7 +183,7 @@ class Habits extends Component {
         const account = this.props.userAccount;
        
         const habit = {name, difficulty, kind, score, account}
-        Api.postUserHabits(habit).then(
+        Api.putUserHabits(habit).then(
             Api.getUserHabits(
                 this.props.userAccount
             ).then(
