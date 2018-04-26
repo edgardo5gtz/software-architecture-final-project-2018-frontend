@@ -78,57 +78,30 @@ class Habits extends Component {
                 <Grid.Row>
                     {this.renderListOrDetails()}
                 </Grid.Row>
-                <Modal size='tiny' className="modal-margin-top" trigger={<Button id="add-button" 
-                                        size="huge" 
-                                        floated="right" 
-                                        icon="plus" 
-                                        circular={true}></Button>}>
-                    <Modal.Header>Create a habit</Modal.Header>
-                    <Modal.Content>
-                        <Modal.Description>
-                            <Form onSubmit={this.triggerSubmit}>
-                                <Form.Group>
-                                    <Form.Field width={12} 
-                                                control={Input} 
-                                                label='Title' 
-                                                onChange={this.handleTitleChange}
-                                                placeholder='title' />
-                                </Form.Group>
-                                <Form.Group>
-                                    <Form.Field width={12} 
-                                                control={Select} 
-                                                label='Difficulty' 
-                                                onChange={this.handleDifficultyChange}
-                                                options={difficultyOptions} placeholder='Medium' />
-                                </Form.Group>
-                                <Form.Group>
-                                    <Form.Field width={12} 
-                                                control={Select} 
-                                                label='Type' 
-                                                options={typeOptions}
-                                                onChange={this.handleTypeChange}
-                                                placeholder='Bad' />
-                                </Form.Group>
-                            </Form>
-                        </Modal.Description>
-                    </Modal.Content>
-                    <Modal.Actions>
-                        <Button onClick={this.triggerSubmit} > Create </Button>
-                    </Modal.Actions>
-                </Modal>
             </Grid.Column>
         );
     }
 
     renderListOrDetails(){
         if(this.state.renderList){
+            // TODO: TO MANY PROPERTIES
             return <HabitsList  match = {this.props.match} 
-                    userHabits={this.state.userHabits}
-                    handleCardDo={this.handleCardDo}
-                    handleCardDelete={this.handleCardDelete}
-                    handleCardEdit={this.handleCardEdit} />
+                                userHabits={this.state.userHabits}
+                                handleCardDo={this.handleCardDo}
+                                handleCardDelete={this.handleCardDelete}
+                                handleCardEdit={this.handleCardEdit} 
+                                handleDifficultyChange = {this.handleDifficultyChange}
+                                handleTitleChange={this.handleTitleChange}
+                                handleTypeChange={this.handleTypeChange}
+                                difficultyOptions = {difficultyOptions}
+                                typeOptions={typeOptions}
+                                triggerSubmit = {this.triggerSubmit}
+                                />
         }else{
-            return <Route path={`${this.props.match.url}/:id`} component={HabitsDetail}/>
+            return <Route path={`${this.props.match.url}/:id`} 
+                render={(props) => <HabitsDetail {...props} habits = {this.state.userHabits}
+                                            difficultyOptions={difficultyOptions}
+                                            typeOptions={typeOptions}/>}/>
         }
     }
 
