@@ -36,6 +36,8 @@ const TaskList = function (props) {
             <Modal size='tiny' className="modal-margin-top" trigger={<Button id="add-button"
                 size="huge"
                 floated="right"
+                basic
+                color='red'
                 icon="plus"
                 circular={true}></Button>}>
                 <Modal.Header>Create a habit</Modal.Header>
