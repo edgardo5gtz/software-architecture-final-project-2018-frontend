@@ -30,3 +30,44 @@
     margin-top: 150px !important;
     margin-left: 525px !important;
 }
+
+.ui.card>.content,
+.ui.cards>.ui.card>.content.red{
+    background-color: crimson;
+}
+
+.ui.card>.content,
+.ui.cards>.ui.card>.content.orange {
+    background-color: coral;
+}
+
+.ui.card>.content,
+.ui.cards>.ui.card>.content.yellow {
+    background-color: goldenrod;
+}
+
+.ui.card>.content,
+.ui.cards>.ui.card>.content.green {
+    background-color: lightgreen;
+}
+
+.ui.card>.content,
+.ui.cards>.ui.card>.content.blue {
+    background-color: royalblue;
+}
+
+.ui.card>.content,
+.ui.cards>.ui.card>.content>.header {
+    color: white;
+}
+
+
+.ui.card>.content,
+.ui.cards>.ui.card>.content>.meta {
+    color: white;
+}
+
+.ui.card>.extra.content,
+.ui.cards>.ui.card>.extra.content {
+    background-color: transparent;
+}
