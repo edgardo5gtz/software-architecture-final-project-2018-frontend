@@ -75,7 +75,7 @@ class TaskDetails extends Component {
 
     handleTitleUpdate(event, result) {
         this.setState(prevState => ({
-            newTask: {
+            updateTask: {
                 ...prevState.updateTask,
                 title: result.value
             }
@@ -84,7 +84,7 @@ class TaskDetails extends Component {
 
     handleDescriptionUpdate(event, result) {
         this.setState(prevState => ({
-            newTask: {
+            updateTask: {
                 ...prevState.updateTask,
                 description: result.value
             }
@@ -93,7 +93,7 @@ class TaskDetails extends Component {
 
     handleDueDateUpdate(event, result) {
         this.setState(prevState => ({
-            newTask: {
+            updateTask: {
                 ...prevState.updateTask,
                 due_date: result.value
             }
@@ -102,7 +102,7 @@ class TaskDetails extends Component {
 
     handleReminderDaysUpdate(event, result) {
         this.setState(prevState => ({
-            newTask: {
+            updateTask: {
                 ...prevState.updateTask,
                 reminder_days: result.value
             }
@@ -111,7 +111,7 @@ class TaskDetails extends Component {
 
     handleReminderTimeUpdate(event, result) {
         this.setState(prevState => ({
-            newTask: {
+            updateTask: {
                 ...prevState.updateTask,
                 reminder_time: result.value
             }
@@ -129,9 +129,8 @@ class TaskDetails extends Component {
         const task = { title, description, due_date, reminder_days, reminder_time, account }
         console.log(task);
         Api.putUserTasks(id, task).then(
-            response => { console.log(response); return }
+            response => { this.setState({ redirect: true }); }
         );
-        this.setState({ redirect: true });
     }
 
 }

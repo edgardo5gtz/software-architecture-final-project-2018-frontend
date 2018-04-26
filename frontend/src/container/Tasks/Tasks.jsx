@@ -60,7 +60,6 @@ class Tasks extends Component {
                 </Grid.Row>
                 <Divider />
                 <Grid.Row className="marginTop marginBottom">
-                    <Pagination totalPages={5} value={0} />
                 </Grid.Row>
                 <Grid.Row>
                     {this.renderListOrDetails()}
