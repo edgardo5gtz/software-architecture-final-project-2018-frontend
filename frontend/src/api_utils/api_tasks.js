@@ -7,11 +7,12 @@ const BASE_URL = 'http://192.168.99.100:8083/tasks'
 
 export { postUserTasks, getUserTasks, deleteUserTasks, putUserTasks };
 
-function postUserTasks(habit) {
+function postUserTasks(task) {
+    console.log(task)
     return axios.post(
-        BASE_URL, habit
+        BASE_URL, task
     ).then(
-        response => { return response }
+        response => { console.log(response);return response }
     ).catch(error => console.log(error));
 }
 

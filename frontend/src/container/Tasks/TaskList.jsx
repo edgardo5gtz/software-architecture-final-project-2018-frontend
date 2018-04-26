@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card, Button, Form, Input, Select, Modal } from 'semantic-ui-react';
+import { Card, Button, Form, Input, Select, Modal, TextArea } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 
 const TaskList = function (props) {
@@ -15,8 +15,6 @@ const TaskList = function (props) {
                                 </Card.Header>
                                 <Card.Meta className="task-meta">
                                     Due Data {item.due_date}
-                                    <br/>
-                                    Done Date {item.done_date}
                                 </Card.Meta>
                                 {item.description}
                             </Card.Content>
@@ -53,18 +51,31 @@ const TaskList = function (props) {
                             </Form.Group>
                             <Form.Group>
                                 <Form.Field width={12}
-                                    control={Select}
-                                    label='Difficulty'
-                                    onChange={props.handleDifficultyChange}
-                                    options={props.difficultyOptions} placeholder='Medium' />
+                                    control={TextArea}
+                                    label='Description'
+                                    onChange={props.handleDescriptionChange}
+                                    placeholder='Medium' />
                             </Form.Group>
                             <Form.Group>
                                 <Form.Field width={12}
-                                    control={Select}
-                                    label='Type'
-                                    options={props.typeOptions}
-                                    onChange={props.handleTypeChange}
-                                    placeholder='Bad' />
+                                    control={Input}
+                                    label='Due date'
+                                    onChange={props.handleDateChange}
+                                    placeholder='0000-00-00' />
+                            </Form.Group>
+                            <Form.Group>
+                                <Form.Field width={12}
+                                    control={Input}
+                                    label='Reminder days'
+                                    onChange={props.handleReminderDaysChange}
+                                    placeholder='0' />
+                            </Form.Group>
+                            <Form.Group>
+                                <Form.Field width={12}
+                                    control={Input}
+                                    label='Reminder time'
+                                    onChange={props.handleReminderTimeChange}
+                                    placeholder='13:00' />
                             </Form.Group>
                         </Form>
                     </Modal.Description>

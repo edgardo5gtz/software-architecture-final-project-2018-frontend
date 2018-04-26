@@ -41,8 +41,8 @@ class HabitsDetails extends Component {
                             control={Select}
                             label='Type'
                             options={this.props.typeOptions}
-                            onChange={ this.state.updateHabit.kind }
-                            placeholder='Bad' />
+                            onChange={ this.handleTypeUpdate }
+                            placeholder= {this.state.updateHabit.kind} />
                     </Form.Group>
                     <Button color='blue'>Edit</Button>
                 </Form>
